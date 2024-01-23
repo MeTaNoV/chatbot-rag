@@ -1,11 +1,11 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Database Management for Reporting - Ver 1.6.3
+ * Chatbot Ultra for WordPress - Database Management for Reporting - Ver 1.6.3
  *
  * This file contains the code for table actions for reporting
- * to display the Chatbot ChatGPT on the website.
+ * to display the Chatbot Ultra on the website.
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -14,10 +14,10 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Create the interaction tracking table - Ver 1.6.3
-function create_chatbot_chatgpt_interactions_table() {
+function create_chatbot_ultra_interactions_table() {
     global $wpdb;
 
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_interactions';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_interactions';
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE IF NOT EXISTS $table_name (
@@ -31,17 +31,17 @@ function create_chatbot_chatgpt_interactions_table() {
     // Log errors or notify admin if there was an error
     if (!empty($wpdb->last_error)) {
         // DIAG - Diagnostics
-        // chatbot_chatgpt_back_trace( 'ERROR', 'Error creating chatbot_chatgpt_interactions table ' . $wpdb->last_error);
+        chatbot_ultra_back_trace( 'ERROR', 'Error creating chatbot_ultra_interactions table ' . $wpdb->last_error);
         return;
     }
 
     // DIAG - Diagnostics
-    // chatbot_chatgpt_back_trace( 'SUCCESS', 'Successfully created chatbot_chatgpt_interactions table');
+    // chatbot_ultra_back_trace( 'SUCCESS', 'Successfully created chatbot_ultra_interactions table');
     return;
 
 }
 // Hook to run the function when the plugin is activated
-// register_activation_hook(__FILE__, 'create_chatbot_chatgpt_interactions_table');
+register_activation_hook(__FILE__, 'create_chatbot_ultra_interactions_table');
 
 // Update Interaction Tracking - Ver 1.6.3
 function update_interaction_tracking() {
@@ -50,11 +50,11 @@ function update_interaction_tracking() {
 
     // Check version and create table if necessary
     // FIXME - WHAT IF THE TABLE WAS DROPPED? - Ver 1.7.6
-    // chatbot_chatgpt_check_version();
+    chatbot_ultra_check_version();
 
     // Get current date and table name
     $today = current_time('Y-m-d');
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_interactions';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_interactions';
 
     // Check if today's date already exists in the table
     $existing_count = $wpdb->get_var($wpdb->prepare("SELECT count FROM $table_name WHERE date = %s", $today));
@@ -85,9 +85,9 @@ function create_conversation_logging_table() {
 
     // Check version and create table if necessary
     // FIXME - WHAT IF THE TABLE WAS DROPPED? - Ver 1.7.6
-    // chatbot_chatgpt_check_version();
+    chatbot_ultra_check_version();
 
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_conversation_log'; 
+    $table_name = $wpdb->prefix . 'chatbot_ultra_conversation_log'; 
 
     // SQL to create the conversation logging table
     $sql = "CREATE TABLE $table_name (
@@ -110,16 +110,16 @@ function create_conversation_logging_table() {
 
     // Log errors or notify admin if there was an error
     if (!empty($wpdb->last_error)) {
-        // chatbot_chatgpt_back_trace( 'ERROR', 'Error creating chatbot_chatgpt_conversation_log table' . $wpdb->last_error);
+        chatbot_ultra_back_trace( 'ERROR', 'Error creating chatbot_ultra_conversation_log table' . $wpdb->last_error);
         return;
     }
 
-    // chatbot_chatgpt_back_trace( 'SUCCESS', 'Successfully created chatbot_chatgpt_conversation_log table');
+    // chatbot_ultra_back_trace( 'SUCCESS', 'Successfully created chatbot_ultra_conversation_log table');
     return;
     
 }
 // Hook to run the function during plugin activation - Ver 1.7.6
-// register_activation_hook(__FILE__, 'create_conversation_logging_table');
+register_activation_hook(__FILE__, 'create_conversation_logging_table');
 
 // Append message to conversation log in the database - Ver 1.7.6
 function append_message_to_conversation_log($sessionId, $user_id, $page_id, $user_type, $thread_Id, $assistant_id, $message) {
@@ -127,12 +127,12 @@ function append_message_to_conversation_log($sessionId, $user_id, $page_id, $use
     global $wpdb;
 
     // Check if conversation logging is enabled
-    if (get_option('chatbot_chatgpt_enable_conversation_logging') !== 'On') {
+    if (get_option('chatbot_ultra_enable_conversation_logging') !== 'On') {
         // Logging is disabled, so just return without doing anything
         return;
     }
 
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_conversation_log';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_conversation_log';
 
     // Prepare and execute the SQL statement
     $insert_result = $wpdb->insert(
@@ -154,7 +154,7 @@ function append_message_to_conversation_log($sessionId, $user_id, $page_id, $use
     // Check if the insert was successful
     if ($insert_result === false) {
         // DIAG - Diagnostics
-        // chatbot_chatgpt_back_trace( 'ERROR', "Failed to insert chat message: " . $wpdb->last_error);
+        chatbot_ultra_back_trace( 'ERROR', "Failed to insert chat message: " . $wpdb->last_error);
         return false;
     }
 
@@ -170,7 +170,7 @@ function clean_specific_expired_transients() {
     $prefix = '_transient_';
 
     // The pattern to match in the transient's name.
-    $pattern = 'chatbot_chatgpt';
+    $pattern = 'chatbot_ultra';
 
     // SQL query to select expired transients that match the pattern.
     $sql = $wpdb->prepare(
@@ -193,18 +193,18 @@ function clean_specific_expired_transients() {
 }
 
 // Function to purge conversation log entries that are older than the specified number of days - Ver 1.7.6
-function chatbot_chatgpt_conversation_log_cleanup() {
+function chatbot_ultra_conversation_log_cleanup() {
 
     global $wpdb;
 
     // Check if conversation logging is enabled
-    if (get_option('chatbot_chatgpt_enable_conversation_logging') !== 'On') {
+    if (get_option('chatbot_ultra_enable_conversation_logging') !== 'On') {
         // Logging is disabled, so just return without doing anything
         return;
     }
 
     // Get the number of days to keep the conversation log
-    $days_to_keep = get_option('chatbot_chatgpt_conversation_log_days_to_keep');
+    $days_to_keep = get_option('chatbot_ultra_conversation_log_days_to_keep');
 
     // If the number of days is not set, then set it to 30 days
     if ($days_to_keep === false) {
@@ -215,7 +215,7 @@ function chatbot_chatgpt_conversation_log_cleanup() {
     $purge_date = date('Y-m-d', strtotime('-' . $days_to_keep . ' days'));
 
     // Get the table name
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_conversation_log';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_conversation_log';
 
     // Prepare and execute the SQL statement
     $delete_result = $wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE interaction_time < %s", $purge_date));
@@ -223,7 +223,7 @@ function chatbot_chatgpt_conversation_log_cleanup() {
     // Check if the delete was successful
     if ($delete_result === false) {
         // DIAG - Diagnostics
-        // chatbot_chatgpt_back_trace( 'ERROR', "Failed to delete conversation log entries: " . $wpdb->last_error);
+        chatbot_ultra_back_trace( 'ERROR', "Failed to delete conversation log entries: " . $wpdb->last_error);
         return false;
     }
 

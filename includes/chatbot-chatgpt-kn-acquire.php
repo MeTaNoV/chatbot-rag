@@ -1,12 +1,12 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Settings - Knowledge Navigator - Acquire
+ * Chatbot Ultra for WordPress - Settings - Knowledge Navigator - Acquire
  *
- * This file contains the code for the Chatbot ChatGPT Knowledge Navigator.
+ * This file contains the code for the Chatbot Ultra Knowledge Navigator.
  * 
  * 
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -14,8 +14,8 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-global $max_top_words, $chatbot_chatgpt_diagnostics, $frequencyData, $totalWordCount, $totalWordPairCount ;
-$max_top_words = esc_attr(get_option('chatbot_chatgpt_kn_maximum_top_words', 100)); // Default to 100
+global $max_top_words, $chatbot_ultra_diagnostics, $frequencyData, $totalWordCount, $totalWordPairCount ;
+$max_top_words = esc_attr(get_option('chatbot_ultra_kn_maximum_top_words', 100)); // Default to 100
 $topWords = [];
 $topWordPairs = [];
 $frequencyData = [];
@@ -23,7 +23,7 @@ $totalWordCount = 0;
 $totalWordPairCount = 0;
 
 // Output Knowledge Navigator Data to log files for pages, posts and comments - Ver 1.6.3
-function chatbot_chatgpt_kn_acquire() {
+function chatbot_ultra_kn_acquire() {
 
     global $wpdb;
     global $topWords;
@@ -42,7 +42,7 @@ function chatbot_chatgpt_kn_acquire() {
     $topWords = [];
     $topWordPairs = [];
 
-    // Reset the chatbot_chatgpt_knowledge_base table
+    // Reset the chatbot_ultra_knowledge_base table
     dbKNStore();
     
     // Generate directory path
@@ -54,7 +54,7 @@ function chatbot_chatgpt_kn_acquire() {
     }
 
     // DIAG - Log directory path for debugging
-    // chatbot_chatgpt_back_trace( 'NOTICE', 'Directory path: ' . $results_dir_path);
+    // chatbot_ultra_back_trace( 'NOTICE', 'Directory path: ' . $results_dir_path);
 
     // Prepare log file for posts
     $log_file_posts = $results_dir_path . 'results-posts.log';
@@ -96,7 +96,7 @@ function chatbot_chatgpt_kn_acquire() {
     foreach ($results as $result) {
         // DIAG - Diagnostic - Ver 1.6.3
         // foreach($result as $key => $value) {
-        //     chatbot_chatgpt_back_trace( 'NOTICE', 'Key: $key, Value: $value');
+        //     chatbot_ultra_back_trace( 'NOTICE', 'Key: $key, Value: $value');
         // }        
 
         // Directly use the post content
@@ -115,17 +115,17 @@ function chatbot_chatgpt_kn_acquire() {
         } else {
             // Handle the case where post content is empty
             // For example, log an error, skip this post, etc.
-            // chatbot_chatgpt_back_trace( 'NOTICE', 'Post ID ' . $result['ID'] . ' has empty content.');
+            // chatbot_ultra_back_trace( 'NOTICE', 'Post ID ' . $result['ID'] . ' has empty content.');
         }
         
         // Construct the URL for the post
         $url = get_permalink($result['ID']);
         // Construct the Title for the post
         $title = get_the_title($result['ID']);
-        // Store each url, title, word and score in the chatbot_chatgpt_knowledge_base table
+        // Store each url, title, word and score in the chatbot_ultra_knowledge_base table
         foreach ($words as $word => $score) {
             $wpdb->insert(
-                $wpdb->prefix . 'chatbot_chatgpt_knowledge_base',
+                $wpdb->prefix . 'chatbot_ultra_knowledge_base',
                 array(
                     'url' => $url,
                     'title' => $title,
@@ -135,10 +135,10 @@ function chatbot_chatgpt_kn_acquire() {
             );
         }
 
-        // Store each url, title, word pair and score in the chatbot_chatgpt_knowledge_base table
+        // Store each url, title, word pair and score in the chatbot_ultra_knowledge_base table
         foreach ($word_pairs as $word => $score) {
             $wpdb->insert(
-                $wpdb->prefix . 'chatbot_chatgpt_knowledge_base',
+                $wpdb->prefix . 'chatbot_ultra_knowledge_base',
                 array(
                     'url' => $url,
                     'title' => $title,
@@ -170,7 +170,7 @@ function chatbot_chatgpt_kn_acquire() {
     foreach ($results as $result) {
         // DIAG - Diagnostic - Ver 1.6.3
         // foreach($result as $key => $value) {
-        //     // chatbot_chatgpt_back_trace( 'NOTICE', "Key: $key, Value: $value");
+        //     // chatbot_ultra_back_trace( 'NOTICE', "Key: $key, Value: $value");
         // }
 
         // Directly use the post content
@@ -189,17 +189,17 @@ function chatbot_chatgpt_kn_acquire() {
         } else {
             // Handle the case where post content is empty
             // For example, log an error, skip this post, etc.
-            // chatbot_chatgpt_back_trace( 'NOTICE', 'Post ID ' . $result['ID'] . ' has empty content.');
+            // chatbot_ultra_back_trace( 'NOTICE', 'Post ID ' . $result['ID'] . ' has empty content.');
         }    
 
         // Construct the URL for the page
         $url = get_permalink($result['ID']);
         // Construct the Title for the post
         $title = get_the_title($result['ID']);
-        // Store each url, title, word and score in the chatbot_chatgpt_knowledge_base table
+        // Store each url, title, word and score in the chatbot_ultra_knowledge_base table
         foreach ($words as $word => $score) {
             $wpdb->insert(
-                $wpdb->prefix . 'chatbot_chatgpt_knowledge_base',
+                $wpdb->prefix . 'chatbot_ultra_knowledge_base',
                 array(
                     'url' => $url,
                     'title' => $title,
@@ -209,10 +209,10 @@ function chatbot_chatgpt_kn_acquire() {
             );
         }
 
-        // Store each url, title, word pair and score in the chatbot_chatgpt_knowledge_base table
+        // Store each url, title, word pair and score in the chatbot_ultra_knowledge_base table
         foreach ($word_pairs as $word => $score) {
             $wpdb->insert(
-                $wpdb->prefix . 'chatbot_chatgpt_knowledge_base',
+                $wpdb->prefix . 'chatbot_ultra_knowledge_base',
                 array(
                     'url' => $url,
                     'title' => $title,
@@ -244,7 +244,7 @@ function chatbot_chatgpt_kn_acquire() {
     foreach ($results as $result) {
         // DIAG - Diagnostic - Ver 1.6.3
         // foreach($result as $key => $value) {
-        //     // chatbot_chatgpt_back_trace( 'NOTICE', "Key: $key, Value: $value");
+        //     // chatbot_ultra_back_trace( 'NOTICE', "Key: $key, Value: $value");
         // }        
 
         // Directly use the post content
@@ -263,17 +263,17 @@ function chatbot_chatgpt_kn_acquire() {
         } else {
             // Handle the case where post content is empty
             // For example, log an error, skip this post, etc.
-            // chatbot_chatgpt_back_trace( 'NOTICE', 'Post ID ' . $result['ID'] . ' has empty content.');
+            // chatbot_ultra_back_trace( 'NOTICE', 'Post ID ' . $result['ID'] . ' has empty content.');
         }
         
         // Construct the URL for the comments
         $url = get_permalink($result['ID']);
         // Construct the Title for the post
         $title = 'Comment';
-        // Store each url, title, word and score in the chatbot_chatgpt_knowledge_base table
+        // Store each url, title, word and score in the chatbot_ultra_knowledge_base table
         foreach ($words as $word => $score) {
             $wpdb->insert(
-                $wpdb->prefix . 'chatbot_chatgpt_knowledge_base',
+                $wpdb->prefix . 'chatbot_ultra_knowledge_base',
                 array(
                     'url' => $url,
                     'title' => $title,
@@ -283,10 +283,10 @@ function chatbot_chatgpt_kn_acquire() {
             );
         }
 
-        // Store each url, title, word pairs and score in the chatbot_chatgpt_knowledge_base table
+        // Store each url, title, word pairs and score in the chatbot_ultra_knowledge_base table
         foreach ($word_pairs as $word => $score) {
             $wpdb->insert(
-                $wpdb->prefix . 'chatbot_chatgpt_knowledge_base',
+                $wpdb->prefix . 'chatbot_ultra_knowledge_base',
                 array(
                     'url' => $url,
                     'title' => $title,
@@ -314,7 +314,7 @@ function chatbot_chatgpt_kn_acquire() {
     }
 
     // DIAG - Error log $max_top_words
-    // chatbot_chatgpt_back_trace( 'NOTICE', "$max_top_words: " . $max_top_words);
+    // chatbot_ultra_back_trace( 'NOTICE', "$max_top_words: " . $max_top_words);
 
     // slice off the top max_top_words
     $topWords = array_slice($topWords, 0, $max_top_words);
@@ -330,5 +330,5 @@ function chatbot_chatgpt_kn_acquire() {
 }
 
 // Add the action hook
-add_action( 'chatbot_chatgpt_kn_acquire', 'chatbot_chatgpt_kn_acquire' );
+add_action( 'chatbot_ultra_kn_acquire', 'chatbot_ultra_kn_acquire' );
 

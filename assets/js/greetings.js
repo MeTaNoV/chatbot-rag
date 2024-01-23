@@ -1,4 +1,4 @@
 jQuery(document).ready(function ($) {
-    localStorage.setItem('chatbot_chatgpt_initial_greeting', greetings_data.initial_greeting);
-    localStorage.setItem('chatbot_chatgpt_subsequent_greeting', greetings_data.subsequent_greeting);
+    localStorage.setItem('chatbot_ultra_initial_greeting', greetings_data.chatbot_ultra_initial_greeting);
+    localStorage.setItem('chatbot_ultra_subsequent_greeting', greetings_data.chatbot_ultra_subsequent_greeting);
 });

@@ -1,12 +1,12 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Settings - Adaptive Skins
+ * Chatbot Ultra for WordPress - Settings - Adaptive Skins
  *
- * This file contains the code for the Chatbot ChatGPT settings page.
+ * This file contains the code for the Chatbot Ultra settings page.
  * It handles the adaptive skins settings and other parameters.
  * 
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // IDEA - COMING SOON - Ver 1.6.8
@@ -16,24 +16,24 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-// function chatbot_chatgpt_skins_enqueue_styles() {
+function chatbot_ultra_skins_enqueue_styles() {
 
-//     // DIAG - Diagnostics
-//     // chatbot_chatgpt_back_trace( 'NOTICE', );
+    // DIAG - Diagnostics
+    // chatbot_ultra_back_trace( 'NOTICE', );
     
-//     $primary_color = get_theme_mod('primary_color', '#000000'); // Default to black if not set
+    $primary_color = get_theme_mod('primary_color', '#000000'); // Default to black if not set
 
-//     $custom_css = "
-//         .parent-class chatbot-chatgpt {
-//             background-color: {$primary_color} !important;
-//         }
-//         .parent-class chatbot-chatgpt .chatbot-chatgpt-header {
-//             background-color: {$primary_color} !important;
-//         }";
-//     wp_add_inline_style('chatbot-chatgpt', $custom_css);
+    $custom_css = "
+        .parent-class chatbot-ultra {
+            background-color: {$primary_color} !important;
+        }
+        .parent-class chatbot-ultra .chatbot-ultra-header {
+            background-color: {$primary_color} !important;
+        }";
+    wp_add_inline_style('chatbot-ultra', $custom_css);
 
-//     // DIAG - Diagnostics
-//     // chatbot_chatgpt_back_trace( 'NOTICE', '$custom_css: ' . $custom_css);
+    // DIAG - Diagnostics
+    // chatbot_ultra_back_trace( 'NOTICE', '$custom_css: ' . $custom_css);
 
-// }
-// add_action('wp_enqueue_scripts', 'chatbot_chatgpt_skins_enqueue_styles');
+}
+add_action('wp_enqueue_scripts', 'chatbot_ultra_skins_enqueue_styles');

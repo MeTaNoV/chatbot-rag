@@ -1,12 +1,12 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Settings - Reporting Page
+ * Chatbot Ultra for WordPress - Settings - Reporting Page
  *
- * This file contains the code for the Chatbot ChatGPT settings page.
+ * This file contains the code for the Chatbot Ultra settings page.
  * It handles the reporting settings and other parameters.
  *
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -15,21 +15,21 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Reporting section callback - Ver 1.6.3
-function chatbot_chatgpt_reporting_section_callback($args) {
+function chatbot_ultra_reporting_section_callback($args) {
     ?>
     <div>
         <p>Use these setting to select the reporting period for Visitor Interactions.</p>
         <p>By default converation logging is initially turned <b>Off</b>.</p>
-        <p>Please review the section <b>Conversation Logging Overview</b> on the <a href="?page=chatbot-chatgpt&tab=support#chatbot-conversation-log">Support</a> tab of this plugin for more details.</p>
+        <p>Please review the section <b>Conversation Logging Overview</b> on the <a href="?page=chatbot-ultra&tab=support#chatbot-conversation-log">Support</a> tab of this plugin for more details.</p>
         <h3>Visitor Conversations Items and Stored Utilized</h3>
-        <p>Conversation items stored in your DB total <b><?php echo chatbot_chatgpt_count_conversations(); ?></b> rows (includes both visitor input and chatbot responses).</p>
-        <p>Conversation items stored take up <b><?php echo chatbot_chatgpt_size_conversations(); ?> MB</b> in your database.</p>
+        <p>Conversation items stored in your DB total <b><?php echo chatbot_ultra_count_conversations(); ?></b> rows (includes both visitor input and chatbot responses).</p>
+        <p>Conversation items stored take up <b><?php echo chatbot_ultra_size_conversations(); ?> MB</b> in your database.</p>
         <h3>Download Conversation Data</h3>
         <p>Use the 'Download Data' button to retrieve the conversation data.</p>
         <?php
             if (is_admin()) {
                 $header = " ";
-                $header .= '<a class="button button-primary" href="' . esc_url(admin_url('admin-post.php?action=chatbot_chatgpt_download_conversation_data')) . '">Download Data</a>';
+                $header .= '<a class="button button-primary" href="' . esc_url(admin_url('admin-post.php?action=chatbot_ultra_download_conversation_data')) . '">Download Data</a>';
                 echo $header;
             }
         ?>
@@ -38,24 +38,24 @@ function chatbot_chatgpt_reporting_section_callback($args) {
         <?php
             if (is_admin()) {
                 $header = " ";
-                $header .= '<a class="button button-primary" href="' . esc_url(admin_url('admin-post.php?action=chatbot_chatgpt_download_interactions_data')) . '">Download Data</a>';
+                $header .= '<a class="button button-primary" href="' . esc_url(admin_url('admin-post.php?action=chatbot_ultra_download_interactions_data')) . '">Download Data</a>';
                 echo $header;
             }
         ?>
         <!-- <h3>Visitor Interactions</h3> -->
-        <!-- <p><?php echo do_shortcode('[chatbot_chatgpt_simple_chart from_database="true"]'); ?></p> -->
+        <!-- <p><?php echo do_shortcode('[chatbot_ultra_simple_chart from_database="true"]'); ?></p> -->
     </div>
     <?php
 }
 
 // Knowledge Navigator Analysis section callback - Ver 1.6.2
-function chatbot_chatgpt_reporting_period_callback($args) {
-    // Get the saved chatbot_chatgpt_reporting_period value or default to "Daily"
-    $output_choice = esc_attr(get_option('chatbot_chatgpt_reporting_period', 'Daily'));
+function chatbot_ultra_reporting_period_callback($args) {
+    // Get the saved chatbot_ultra_reporting_period value or default to "Daily"
+    $output_choice = esc_attr(get_option('chatbot_ultra_reporting_period', 'Daily'));
     // DIAG - Log the output choice
-    // chatbot_chatgpt_back_trace( 'NOTICE', 'chatbot_chatgpt_reporting_period' . $output_choice);
+    // chatbot_ultra_back_trace( 'NOTICE', 'chatbot_ultra_reporting_period' . $output_choice);
     ?>
-    <select id="chatbot_chatgpt_reporting_period" name="chatbot_chatgpt_reporting_period">
+    <select id="chatbot_ultra_reporting_period" name="chatbot_ultra_reporting_period">
         <option value="<?php echo esc_attr( 'Daily' ); ?>" <?php selected( $output_choice, 'Daily' ); ?>><?php echo esc_html( 'Daily' ); ?></option>
         <!-- <option value="<?php echo esc_attr( 'Weekly' ); ?>" <?php selected( $output_choice, 'Weekly' ); ?>><?php echo esc_html( 'Weekly' ); ?></option> -->
         <option value="<?php echo esc_attr( 'Monthly' ); ?>" <?php selected( $output_choice, 'Monthly' ); ?>><?php echo esc_html( 'Monthly' ); ?></option>
@@ -65,13 +65,13 @@ function chatbot_chatgpt_reporting_period_callback($args) {
 }
 
 // Conversation Logging - Ver 1.7.6
-function  chatbot_chatgpt_enable_conversation_logging_callback($args) {
-    // Get the saved chatbot_chatgpt_enable_conversation_logging value or default to "Off"
-    $output_choice = esc_attr(get_option('chatbot_chatgpt_enable_conversation_logging', 'Off'));
+function  chatbot_ultra_enable_conversation_logging_callback($args) {
+    // Get the saved chatbot_ultra_enable_conversation_logging value or default to "Off"
+    $output_choice = esc_attr(get_option('chatbot_ultra_enable_conversation_logging', 'Off'));
     // DIAG - Log the output choice
-    // chatbot_chatgpt_back_trace( 'NOTICE', 'chatbot_chatgpt_enable_conversation_logging' . $output_choice);
+    // chatbot_ultra_back_trace( 'NOTICE', 'chatbot_ultra_enable_conversation_logging' . $output_choice);
     ?>
-    <select id="chatbot_chatgpt_enable_conversation_logging" name="chatbot_chatgpt_enable_conversation_logging">
+    <select id="chatbot_ultra_enable_conversation_logging" name="chatbot_ultra_enable_conversation_logging">
         <option value="<?php echo esc_attr( 'On' ); ?>" <?php selected( $output_choice, 'On' ); ?>><?php echo esc_html( 'On' ); ?></option>
         <option value="<?php echo esc_attr( 'Off' ); ?>" <?php selected( $output_choice, 'Off' ); ?>><?php echo esc_html( 'Off' ); ?></option>
     </select>
@@ -79,13 +79,13 @@ function  chatbot_chatgpt_enable_conversation_logging_callback($args) {
 }
 
 // Conversation log retention period - Ver 1.7.6
-function chatbot_chatgpt_conversation_log_days_to_keep_callback($args) {
-    // Get the saved chatbot_chatgpt_conversation_log_days_to_keep value or default to "30"
-    $output_choice = esc_attr(get_option('chatbot_chatgpt_conversation_log_days_to_keep', '30'));
+function chatbot_ultra_conversation_log_days_to_keep_callback($args) {
+    // Get the saved chatbot_ultra_conversation_log_days_to_keep value or default to "30"
+    $output_choice = esc_attr(get_option('chatbot_ultra_conversation_log_days_to_keep', '30'));
     // DIAG - Log the output choice
-    // chatbot_chatgpt_back_trace( 'NOTICE', 'chatbot_chatgpt_conversation_log_days_to_keep' . $output_choice);
+    // chatbot_ultra_back_trace( 'NOTICE', 'chatbot_ultra_conversation_log_days_to_keep' . $output_choice);
     ?>
-    <select id="chatbot_chatgpt_conversation_log_days_to_keep" name="chatbot_chatgpt_conversation_log_days_to_keep">
+    <select id="chatbot_ultra_conversation_log_days_to_keep" name="chatbot_ultra_conversation_log_days_to_keep">
         <option value="<?php echo esc_attr( '1' ); ?>" <?php selected( $output_choice, '7' ); ?>><?php echo esc_html( '1' ); ?></option>
         <option value="<?php echo esc_attr( '7' ); ?>" <?php selected( $output_choice, '7' ); ?>><?php echo esc_html( '7' ); ?></option>
         <option value="<?php echo esc_attr( '30' ); ?>" <?php selected( $output_choice, '30' ); ?>><?php echo esc_html( '30' ); ?></option>
@@ -97,7 +97,7 @@ function chatbot_chatgpt_conversation_log_days_to_keep_callback($args) {
     <?php
 }
 
-// Chatbot ChatGPT Simple Chart - Ver 1.6.3
+// Chatbot Ultra Simple Chart - Ver 1.6.3
 function generate_gd_bar_chart($labels, $data, $colors, $name) {
     // Create an image
     $width = 500;
@@ -192,30 +192,30 @@ function generate_gd_bar_chart($labels, $data, $colors, $name) {
 }
 
 
-// Chatbot ChatGPT Charts - Ver 1.6.3
-function chatbot_chatgpt_simple_chart_shortcode_function( $atts ) {
+// Chatbot Ultra Charts - Ver 1.6.3
+function chatbot_ultra_simple_chart_shortcode_function( $atts ) {
 
     // Check is GD Library is installed - Ver 1.6.3
     if (extension_loaded('gd')) {
         // GD Library is installed and loaded
         // DIAG - Log the output choice
-        chatbot_chatgpt_back_trace( 'NOTICE', 'GD Library is installed and loaded.');
+        chatbot_ultra_back_trace( 'NOTICE', 'GD Library is installed and loaded.');
     } else {
         // Create a detailed admin error message
-        function chatbot_chatgpt_extension_load_error() {
+        function chatbot_ultra_extension_load_error() {
             $class = 'notice notice-error';
-            $message = __( 'Chatbot ChatGPT requires the GD Library to function correctly, but it is not installed or enabled on your server. Please install or enable the GD Library.', 'chatbot-chatgpt' );
+            $message = __( 'Chatbot Ultra requires the GD Library to function correctly, but it is not installed or enabled on your server. Please install or enable the GD Library.', 'chatbot-ultra' );
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
         }
-        add_action( 'admin_notices', 'chatbot_chatgpt_extension_load_error' );
+        add_action( 'admin_notices', 'chatbot_ultra_extension_load_error' );
         // DIAG - Log the output choice
-        chatbot_chatgpt_back_trace( 'NOTICE', 'GD Library is not installed! No chart will be displayed.');
+        chatbot_ultra_back_trace( 'NOTICE', 'GD Library is not installed! No chart will be displayed.');
         // Disable the shortcode functionality
         return;
     }
 
     // Retrieve the reporting period
-    $reporting_period = get_option('chatbot_chatgpt_reporting_period');
+    $reporting_period = get_option('chatbot_ultra_reporting_period');
 
     // Parsing shortcode attributes
     $a = shortcode_atts( array(
@@ -226,10 +226,10 @@ function chatbot_chatgpt_simple_chart_shortcode_function( $atts ) {
 
     if(isset($atts['from_database']) && $atts['from_database'] == 'true') {
         global $wpdb;
-        $table_name = $wpdb->prefix . 'chatbot_chatgpt_interactions';
+        $table_name = $wpdb->prefix . 'chatbot_ultra_interactions';
         
         // Get the reporting period from the options
-        $reporting_period = get_option('chatbot_chatgpt_reporting_period');
+        $reporting_period = get_option('chatbot_ultra_reporting_period');
         
         // Calculate the start date and group by clause based on the reporting period
         if($reporting_period === 'Daily') {
@@ -249,7 +249,7 @@ function chatbot_chatgpt_simple_chart_shortcode_function( $atts ) {
 
         if(!empty($wpdb->last_error)) {
             // DIAG - Handle the error
-            chatbot_chatgpt_back_trace( 'ERROR', 'SQL query error ' . $wpdb->last_error);
+            chatbot_ultra_back_trace( 'ERROR', 'SQL query error ' . $wpdb->last_error);
             return;
         } else if(!empty($results)) {
             $labels = [];
@@ -273,17 +273,17 @@ function chatbot_chatgpt_simple_chart_shortcode_function( $atts ) {
     $img_path = generate_gd_bar_chart($a['labels'], $atts['data'], isset($atts['color']) ? $atts['color'] : null, $a['name']);
     $img_url = plugin_dir_url(__FILE__) . '../assets/images/' . $a['name'] . '.png';
 
-    wp_schedule_single_event(time() + 60, 'chatbot_chatgpt_delete_chart', array($img_path)); // 60 seconds delay
+    wp_schedule_single_event(time() + 60, 'chatbot_ultra_delete_chart', array($img_path)); // 60 seconds delay
 
     return '<img src="' . $img_url . '" alt="Bar Chart">';
 }
 // TEMPORARILY REMOVED AS SOME USERS ARE EXPERIENCING ISSUES WITH THE CHARTS - Ver 1.7.8
 // Add shortcode
-// add_shortcode('chatbot_chatgpt_simple_chart', 'chatbot_chatgpt_simple_chart_shortcode_function');
+add_shortcode('chatbot_ultra_simple_chart', 'chatbot_ultra_simple_chart_shortcode_function');
 
 
 // Clean up ../image subdirectory - Ver 1.6.3
-function chatbot_chatgpt_delete_chart() {
+function chatbot_ultra_delete_chart() {
     $img_dir_path = plugin_dir_path(__FILE__) . '../assets/images/'; // Replace with your actual directory path
     $png_files = glob($img_dir_path . '*.png'); // Search for .png files in the directory
 
@@ -291,44 +291,44 @@ function chatbot_chatgpt_delete_chart() {
         unlink($png_file); // Delete each .png file
     }
 }
-add_action('chatbot_chatgpt_delete_chart', 'chatbot_chatgpt_delete_chart');
+add_action('chatbot_ultra_delete_chart', 'chatbot_ultra_delete_chart');
 
 
 // Count the number of conversations stored - Ver 1.7.6
-function chatbot_chatgpt_count_conversations() {
+function chatbot_ultra_count_conversations() {
     global $wpdb;
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_conversation_log';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_conversation_log';
     $results = $wpdb->get_results("SELECT COUNT(id) AS count FROM $table_name");
     return $results[0]->count;
 }
 
 // Calculated size of the converations stored - Ver 1.7.6
-function chatbot_chatgpt_size_conversations() {
+function chatbot_ultra_size_conversations() {
     global $wpdb;
     $database_name = $wpdb->dbname;
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_conversation_log';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_conversation_log';
     $results = $wpdb->get_results("SELECT table_name AS `Table`, round(((data_length + index_length) / 1024 / 1024), 2) `Size in MB` FROM information_schema.TABLES WHERE table_schema = '$database_name' AND table_name = '$table_name'");
     return $results[0]->{'Size in MB'};
 }
 
-function chatbot_chatgpt_download_interactions_data() {
+function chatbot_ultra_download_interactions_data() {
 
-    // Export data from the chatbot_chatgpt_interactions table to a csv file
-    chatbot_chatgpt_export_data('chatbot_chatgpt_interactions', 'Chatbot ChatGPT Interactions');
+    // Export data from the chatbot_ultra_interactions table to a csv file
+    chatbot_ultra_export_data('chatbot_ultra_interactions', 'Chatbot Ultra Interactions');
 
 }
 
-function chatbot_chatgpt_download_conversation_data() {
+function chatbot_ultra_download_conversation_data() {
 
-    // Export data from the chatbot_chatgpt_conversation_log table to a csv file
-    chatbot_chatgpt_export_data('chatbot_chatgpt_conversation_log', 'Chatbot ChatGPT Conversation Logs');
+    // Export data from the chatbot_ultra_conversation_log table to a csv file
+    chatbot_ultra_export_data('chatbot_ultra_conversation_log', 'Chatbot Ultra Conversation Logs');
     
 }
 
 // Download the conversation data - Ver 1.7.6
-function chatbot_chatgpt_export_data( $t_table_name, $t_file_name ) {
+function chatbot_ultra_export_data( $t_table_name, $t_file_name ) {
 
-    // Export data from the chatbot_chatgpt_conversation_log table to a csv file
+    // Export data from the chatbot_ultra_conversation_log table to a csv file
     global $wpdb;
     $table_name = $wpdb->prefix . $t_table_name;
     $results = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
@@ -396,5 +396,5 @@ function chatbot_chatgpt_export_data( $t_table_name, $t_file_name ) {
     exit;
 
 }
-add_action('admin_post_chatbot_chatgpt_download_conversation_data', 'chatbot_chatgpt_download_conversation_data');
-add_action('admin_post_chatbot_chatgpt_download_interactions_data', 'chatbot_chatgpt_download_interactions_data');
+add_action('admin_post_chatbot_ultra_download_conversation_data', 'chatbot_ultra_download_conversation_data');
+add_action('admin_post_chatbot_ultra_download_interactions_data', 'chatbot_ultra_download_interactions_data');

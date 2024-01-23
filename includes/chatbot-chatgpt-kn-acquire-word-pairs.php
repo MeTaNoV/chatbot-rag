@@ -1,12 +1,12 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Settings - Knowledge Navigator - Acquire Word Pairs
+ * Chatbot Ultra for WordPress - Settings - Knowledge Navigator - Acquire Word Pairs
  *
- * This file contains the code for the Chatbot ChatGPT Knowledge Navigator.
+ * This file contains the code for the Chatbot Ultra Knowledge Navigator.
  * 
  * 
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -14,8 +14,8 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-global $max_top_words, $chatbot_chatgpt_diagnostics, $frequencyData, $totalWordCount, $totalWordPairCount ;
-$max_top_words = esc_attr(get_option('chatbot_chatgpt_kn_maximum_top_words', 100)); // Default to 100
+global $max_top_words, $chatbot_ultra_diagnostics, $frequencyData, $totalWordCount, $totalWordPairCount ;
+$max_top_words = esc_attr(get_option('chatbot_ultra_kn_maximum_top_words', 100)); // Default to 100
 $topWords = [];
 $topWordPairs = [];
 $frequencyData = [];
@@ -31,16 +31,16 @@ function kn_acquire_word_pairs( $content ) {
     global $totalWordPairCount;
     
     // DIAG - Diagnostic - Ver 1.6.3
-    // chatbot_chatgpt_back_trace( 'NOTICE', "FUNCTION - kn_acquire_just_the_words");
+    // chatbot_ultra_back_trace( 'NOTICE', "FUNCTION - kn_acquire_just_the_words");
     
     // Before beginning, translate the $stopWords array into the language of the website
     if (get_locale() !== "en_US") {
         // DIAG - Diagnostic - Ver 1.7.2.1
-        // chatbot_chatgpt_back_trace( 'NOTICE', 'get_locale()' . get_locale());
+        // chatbot_ultra_back_trace( 'NOTICE', 'get_locale()' . get_locale());
         // $localized_stopWords = localize_global_stopwords(get_locale(), $stopWords);
         $localized_stopWords = get_localized_stopwords(get_locale(), $stopWords);
         // DIAG - Diagnostic - Ver 1.7.2.1
-        // chatbot_chatgpt_back_trace( 'NOTICE',  '$localized_stopWords ' . $localized_stopWords);
+        // chatbot_ultra_back_trace( 'NOTICE',  '$localized_stopWords ' . $localized_stopWords);
     } else {
         $localized_stopWords = $stopWords;
     }

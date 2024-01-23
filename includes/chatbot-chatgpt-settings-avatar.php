@@ -1,12 +1,12 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Settings - Avatar Page
+ * Chatbot Ultra for WordPress - Settings - Avatar Page
  *
- * This file contains the code for the Chatbot ChatGPT settings page.
+ * This file contains the code for the Chatbot Ultra settings page.
  * It allows users to configure the select avatar of choice and other parameters.
  * 
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Custom Avatar Icon - Ver 1.5.0
-function chatbot_chatgpt_avatar_section_callback($args) {
+function chatbot_ultra_avatar_section_callback($args) {
     echo '<div>
         <p>Choose an avatar that best represents you and your brand.  You can change your avatar at any time.</p>
         <p>It\'s ok you don\'t want an Avatar.  Just select the \'None\' option among the originals.</p>
@@ -24,20 +24,20 @@ function chatbot_chatgpt_avatar_section_callback($args) {
 }
  
 // Custom Avatar Icon - Ver 1.5.0
-function chatbot_chatgpt_custom_avatar_callback($args) {
+function chatbot_ultra_custom_avatar_callback($args) {
     // Get the avatar option. If it's not set or is NULL, default to custom value.
-    $custom_avatar_icon = esc_attr(get_option('chatbot_chatgpt_custom_avatar_icon_setting', 'icon-001.png'));
+    $custom_avatar_icon = esc_attr(get_option('chatbot_ultra_custom_avatar_icon', 'icon-001.png'));
     ?>
-    <input type="text" id="chatbot_chatgpt_custom_avatar_icon_setting" name="chatbot_chatgpt_custom_avatar_icon_setting" value="<?php echo esc_attr( $custom_avatar_icon ); ?>" class="regular-text">
+    <input type="text" id="chatbot_ultra_custom_avatar_icon" name="chatbot_ultra_custom_avatar_icon" value="<?php echo esc_attr( $custom_avatar_icon ); ?>" class="regular-text">
     <?php
 }
 
 // Avatar Icon Set - Ver 1.6.7
-function chatbot_chatgpt_avatar_icon_set_callback($args) {
+function chatbot_ultra_avatar_icon_set_callback($args) {
     // Get the avatar set option. If it's not set or is NULL, default to custom value.
-    $avatar_icon_set = esc_attr(get_option('chatbot_chatgpt_avatar_icon_set', 'Original'));
+    $avatar_icon_set = esc_attr(get_option('chatbot_ultra_avatar_icon_set', 'Original'));
     ?>
-    <select id="chatbot_chatgpt_avatar_icon_set" name="chatbot_chatgpt_avatar_icon_set">
+    <select id="chatbot_ultra_avatar_icon_set" name="chatbot_ultra_avatar_icon_set">
         <?php
         $options = array("Original", "Chinese New Year", "Christmas", "Fall", "Halloween", "Spring", "Summer", "Thanksgiving", "Winter");
         foreach ($options as $option) {
@@ -50,30 +50,30 @@ function chatbot_chatgpt_avatar_icon_set_callback($args) {
 }
 
 // Avatar Icon - Ver 1.5.0
-function chatbot_chatgpt_avatar_greeting_callback($args) {
+function chatbot_ultra_avatar_greeting_callback($args) {
     // Get the avatar greeting option. If it's not set, is NULL, or is an empty string, default to custom value.
-    $avatar_greeting = esc_attr(get_option('chatbot_chatgpt_avatar_greeting_setting', 'Howdy!!! Great to see you today! How can I help you?'));
+    $avatar_greeting = esc_attr(get_option('chatbot_ultra_avatar_greeting', 'Howdy!!! Great to see you today! How can I help you?'));
 
     // If avatar greeting is still an empty string, assign it the default value
     if (empty($avatar_greeting)) {
         $avatar_greeting = 'Howdy!!! Great to see you today! How can I help you?';
     }
     ?>
-    <input type="text" id="chatbot_chatgpt_avatar_greeting_setting" name="chatbot_chatgpt_avatar_greeting_setting" value="<?php echo esc_attr($avatar_greeting); ?>" class="regular-text">
+    <input type="text" id="chatbot_ultra_avatar_greeting" name="chatbot_ultra_avatar_greeting" value="<?php echo esc_attr($avatar_greeting); ?>" class="regular-text">
     <?php
 }
 
 
 // Avatar Icon settings section callback - Ver 1.5.0
-function chatbot_chatgpt_avatar_icon_callback($args) {
+function chatbot_ultra_avatar_icon_callback($args) {
     // Get the avatar option. If it's not set or is NULL, default to the first icon.
-    $selectedIcon = esc_attr(get_option('chatbot_chatgpt_avatar_icon_setting', 'icon-001.png'));
+    $selectedIcon = esc_attr(get_option('chatbot_ultra_avatar_icon', 'icon-001.png'));
     if ($selectedIcon === '') {
         $selectedIcon = 'icon-001.png';
     }
     ?>
     <p>Select your icon by clicking on an image to select it.  Don't forget to click 'Save Settings'.</p>
-    <input type="hidden" id="chatbot_chatgpt_avatar_icon_setting" name="chatbot_chatgpt_avatar_icon_setting" value="<?php echo esc_attr( $selectedIcon ); ?>">
+    <input type="hidden" id="chatbot_ultra_avatar_icon" name="chatbot_ultra_avatar_icon" value="<?php echo esc_attr( $selectedIcon ); ?>">
     <table>
         <?php
             $iconSets = [
@@ -88,7 +88,7 @@ function chatbot_chatgpt_avatar_icon_callback($args) {
                 "Winter" => 10
             ];
             $cols = 10;
-            $selectedIcon = esc_attr(get_option('chatbot_chatgpt_avatar_icon_setting', 'icon-001.png'));
+            $selectedIcon = esc_attr(get_option('chatbot_ultra_avatar_icon', 'icon-001.png'));
 
             foreach ($iconSets as $setName => $iconCount) {
                 $rows = ceil($iconCount / $cols);

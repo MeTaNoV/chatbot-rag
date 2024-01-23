@@ -1,12 +1,12 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Knowledge Navigator - TF-IDF Analyzer
+ * Chatbot Ultra for WordPress - Knowledge Navigator - TF-IDF Analyzer
  *
- * This file contains the code for the Chatbot ChatGPT Knowlege Navigator analysis.
+ * This file contains the code for the Chatbot Ultra Knowlege Navigator analysis.
  * 
  * 
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
  // If this file is called directly, abort.
@@ -15,26 +15,26 @@
 }
 
 // Knowledge Navigator Analysis section callback - Ver 1.6.2
-function chatbot_chatgpt_kn_analysis_section_callback($args) {
+function chatbot_ultra_kn_analysis_section_callback($args) {
     ?>
     <p>Use the 'Download Data' button to retrieve the Knowledge Navigator results.</p>
     <?php
     if (is_admin()) {
         $header = " ";
-        $header .= '<a class="button button-primary" href="' . esc_url(admin_url('admin-post.php?action=chatbot_chatgpt_kn_analysis_download_csv')) . '">Download Data</a>';
+        $header .= '<a class="button button-primary" href="' . esc_url(admin_url('admin-post.php?action=chatbot_ultra_kn_analysis_download_csv')) . '">Download Data</a>';
         echo $header;
     }
 }
 
 
 // Knowledge Navigator Analysis section callback - Ver 1.6.2
-function chatbot_chatgpt_kn_analysis_output_callback($args) {
-    // Get the saved chatbot_chatgpt_kn_analysis_choice value or default to "CSV"
-    $output_choice = esc_attr(get_option('chatbot_chatgpt_kn_analysis_output', 'CSV'));
+function chatbot_ultra_kn_analysis_output_callback($args) {
+    // Get the saved chatbot_ultra_kn_analysis_choice value or default to "CSV"
+    $output_choice = esc_attr(get_option('chatbot_ultra_kn_analysis_output', 'CSV'));
     // DIAG - Log the output choice
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$output_choice' . $output_choice);
+    // chatbot_ultra_back_trace( 'NOTICE', '$output_choice' . $output_choice);
     ?>
-    <select id="chatbot_chatgpt_kn_analysis_output" name="chatbot_chatgpt_kn_analysis_output">
+    <select id="chatbot_ultra_kn_analysis_output" name="chatbot_ultra_kn_analysis_output">
         <option value="<?php echo esc_attr( 'CSV' ); ?>" <?php selected( $output_choice, 'CSV' ); ?>><?php echo esc_html( 'CSV' ); ?></option>
     </select>
     <?php
@@ -42,7 +42,7 @@ function chatbot_chatgpt_kn_analysis_output_callback($args) {
 
 
 // Download the TF-IDF data
-function chatbot_chatgpt_kn_analysis_download_csv() {
+function chatbot_ultra_kn_analysis_download_csv() {
     // Generate the results directory path
     $results_dir_path = dirname(plugin_dir_path(__FILE__)) . '/results/';
 
@@ -78,4 +78,4 @@ function chatbot_chatgpt_kn_analysis_download_csv() {
     echo $csv_data;
     exit;
 }
-add_action('admin_post_chatbot_chatgpt_kn_analysis_download_csv', 'chatbot_chatgpt_kn_analysis_download_csv');
+add_action('admin_post_chatbot_ultra_kn_analysis_download_csv', 'chatbot_ultra_kn_analysis_download_csv');

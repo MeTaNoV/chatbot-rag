@@ -1,11 +1,11 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Knowlege Navigator - Enhance Response - Ver 1.6.9
+ * Chatbot Ultra for WordPress - Knowlege Navigator - Enhance Response - Ver 1.6.9
  *
  * This file contains the code for to utlize the DB with the TF-IDF data to enhance the chatbots response.
  * 
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -14,20 +14,20 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Enhance the respse with TF-IDF - Ver 1.6.9
-function chatbot_chatgpt_enhance_with_tfidf($message) {
+function chatbot_ultra_enhance_with_tfidf($message) {
 
 	// Global Variables
     global $wpdb;
-    global $chatbot_chatgpt_diagnostics;
+    global $chatbot_ultra_diagnostics;
     global $learningMessages;
     global $errorResponses;
     global $stopWords;
     $enhanced_response = "";
 
     // Check that Knowledge Navigator is finished running
-    $chatbot_chatgpt_kn_status = get_option('chatbot_chatgpt_kn_status', '');
+    $chatbot_ultra_kn_status = get_option('chatbot_ultra_kn_status', '');
     // If the status does not contain 'Completed', then Knowledge Navigator is still running
-    if (false === strpos($chatbot_chatgpt_kn_status, 'Completed')) {
+    if (false === strpos($chatbot_ultra_kn_status, 'Completed')) {
         // IDEA Return one of the $errorResponses - Ver 1.6.3
         // IDEA Belt and Suspenders - We shouldn't be here unless something went really wrong up above this point
         // return $errorResponses[array_rand($errorResponses)];
@@ -35,10 +35,10 @@ function chatbot_chatgpt_enhance_with_tfidf($message) {
     }
 
     // Retrieve links to the highest scoring documents - Ver 1.6.3
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_knowledge_base';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_knowledge_base';
     $words = explode(" ", $message);
     // DIAG Diagnostic - Ver 1.7.2.1
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$words: ' . print_r($words, true));
+    // chatbot_ultra_back_trace( 'NOTICE', '$words: ' . print_r($words, true));
     $match_found = false;
     $highest_score = 0;
     $highest_score_word = "";
@@ -107,9 +107,9 @@ function chatbot_chatgpt_enhance_with_tfidf($message) {
     }
 
     // DIAG Diagnostic - Ver 1.6.5
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$highest_score: ' . $highest_score);
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$highest_score_word: ' . $highest_score_word);
-    // chatbot_chatgpt_back_trace( 'NOTICE', 'Chatbot ChatGPT: $highest_score_url: ' . $highest_score_url);
+    // chatbot_ultra_back_trace( 'NOTICE', '$highest_score: ' . $highest_score);
+    // chatbot_ultra_back_trace( 'NOTICE', '$highest_score_word: ' . $highest_score_word);
+    // chatbot_ultra_back_trace( 'NOTICE', 'Chatbot Ultra: $highest_score_url: ' . $highest_score_url);
 
     // IDEA Append message and link if found to ['choices'][0]['message']['urls']
     if ($highest_score > 0) {
@@ -121,8 +121,8 @@ function chatbot_chatgpt_enhance_with_tfidf($message) {
         // }
 
         // Support for None, Random, or Custom Learnings Messages - Ver 1.7.1
-        $chatbot_chatgpt_suppress_learnings = esc_attr(get_option('chatbot_chatgpt_suppress_learnings', 'Random'));
-        $chatbot_chatgpt_custom_learnings_message = esc_attr(get_option('chatbot_chatgpt_custom_learnings_message', 'More information may be found here ...'));
+        $chatbot_ultra_suppress_learnings = esc_attr(get_option('chatbot_ultra_suppress_learnings', 'Random'));
+        $chatbot_ultra_custom_learnings_message = esc_attr(get_option('chatbot_ultra_custom_learnings_message', 'More information may be found here ...'));
 
         if (get_locale() !== "en_US") {
             $localized_learningMessages = get_localized_learningMessages(get_locale(), $learningMessages);
@@ -130,12 +130,12 @@ function chatbot_chatgpt_enhance_with_tfidf($message) {
             $localized_learningMessages = $learningMessages;
         }
 
-        if ('None' == $chatbot_chatgpt_suppress_learnings) {
+        if ('None' == $chatbot_ultra_suppress_learnings) {
             $enhanced_response .= "\n\n" . "Also look" . " ";
-        } elseif ('Random' == $chatbot_chatgpt_suppress_learnings) {
+        } elseif ('Random' == $chatbot_ultra_suppress_learnings) {
             $enhanced_response .= "\n\n" . $localized_learningMessages[array_rand($localized_learningMessages)];
-        } elseif ('Custom' == $chatbot_chatgpt_suppress_learnings) {
-            $enhanced_response .= "\n\n" . $chatbot_chatgpt_custom_learnings_message . " ";
+        } elseif ('Custom' == $chatbot_ultra_suppress_learnings) {
+            $enhanced_response .= "\n\n" . $chatbot_ultra_custom_learnings_message . " ";
         } else {
             $enhanced_response .= "\n\n" . $localized_learningMessages[array_rand($localized_learningMessages)];
         }
@@ -159,11 +159,11 @@ function chatbot_chatgpt_enhance_with_tfidf($message) {
     $enhanced_response = preg_replace('/<b>(.*?)<\/b>/', '$1', $enhanced_response);
 
     // DIAG - Diagnostic - Ver 1.6.3
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$match_found: ' . $match_found);
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$highest_score: ' . $highest_score);
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$highest_score_word: ' . $highest_score_word);
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$highest_score_url: ' . $highest_score_url);
-    // chatbot_chatgpt_back_trace( 'NOTICE', '$enhanced_response: ' . $enhanced_response);
+    // chatbot_ultra_back_trace( 'NOTICE', '$match_found: ' . $match_found);
+    // chatbot_ultra_back_trace( 'NOTICE', '$highest_score: ' . $highest_score);
+    // chatbot_ultra_back_trace( 'NOTICE', '$highest_score_word: ' . $highest_score_word);
+    // chatbot_ultra_back_trace( 'NOTICE', '$highest_score_url: ' . $highest_score_url);
+    // chatbot_ultra_back_trace( 'NOTICE', '$enhanced_response: ' . $enhanced_response);
 
 	// Interaction Tracking - Ver 1.6.3
 	update_interaction_tracking();

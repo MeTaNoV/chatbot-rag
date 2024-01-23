@@ -1,11 +1,11 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Knowlege Navigator - Database and File Management - Ver 1.6.3
+ * Chatbot Ultra for WordPress - Knowlege Navigator - Database and File Management - Ver 1.6.3
  *
  * This file contains the code for table actions for database and file management.
  * 
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 function dbKNStore() {
     global $wpdb;
     $charset_collate = $wpdb->get_charset_collate();
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_knowledge_base';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_knowledge_base';
 
     // Drop table if it exists
     $wpdb->query("DROP TABLE IF EXISTS $table_name");
@@ -48,7 +48,7 @@ function dbKNStore() {
 function dbKNStoreTFIDF() {
     global $wpdb;
     $charset_collate = $wpdb->get_charset_collate();
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_knowledge_base_tfidf';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_knowledge_base_tfidf';
 
     // Drop table if it exists
     $wpdb->query("DROP TABLE IF EXISTS $table_name");
@@ -83,17 +83,17 @@ function store_top_words() {
     dbKNStoreTFIDF();
     
     // String together the $topWords
-    $chatbot_chatgpt_kn_conversation_context = "This site includes references to and information about the following topics: ";
+    $chatbot_ultra_kn_conversation_context = "This site includes references to and information about the following topics: ";
     foreach ($topWords as $word => $tfidf) {
-        $chatbot_chatgpt_kn_conversation_context .= $word . ", ";
+        $chatbot_ultra_kn_conversation_context .= $word . ", ";
         }
-    $chatbot_chatgpt_kn_conversation_context .= "and more.";
+    $chatbot_ultra_kn_conversation_context .= "and more.";
     
     // Save the results message value into the option
-    update_option('chatbot_chatgpt_kn_conversation_context', $chatbot_chatgpt_kn_conversation_context);
+    update_option('chatbot_ultra_kn_conversation_context', $chatbot_ultra_kn_conversation_context);
 
     // Add each word to the TF-IDF table - Ver 1.6.3
-    $table_name = $wpdb->prefix . 'chatbot_chatgpt_knowledge_base_tfidf';
+    $table_name = $wpdb->prefix . 'chatbot_ultra_knowledge_base_tfidf';
     foreach ($topWords as $word => $tfidf) {
         $wpdb->insert(
             $table_name,
@@ -113,7 +113,7 @@ function output_results() {
     global $topWords;
 
     // DIAG - Diagnostic - Ver 1.6.3
-    // chatbot_chatgpt_back_trace( 'NOTICE', 'ENTER: output_results()');
+    // chatbot_ultra_back_trace( 'NOTICE', 'ENTER: output_results()');
 
     // Generate the directory path
     $results_dir_path = dirname(plugin_dir_path(__FILE__)) . '/results/';
@@ -121,7 +121,7 @@ function output_results() {
     // Create the directory if it doesn't exist
     if (!file_exists($results_dir_path)) {
         if (!mkdir($results_dir_path, 0755, true)) {
-            // chatbot_chatgpt_back_trace( 'ERROR', 'Failed to create results directory');
+            chatbot_ultra_back_trace( 'ERROR', 'Failed to create results directory');
             return;
         }
     }
@@ -138,7 +138,7 @@ function output_results() {
             $f->fputcsv([$word, $tfidf]);
         }
     } catch (RuntimeException $e) {
-        // chatbot_chatgpt_back_trace( 'ERROR', 'Failed to open CSV file for writing: ' . $e->getMessage());
+        chatbot_ultra_back_trace( 'ERROR', 'Failed to open CSV file for writing: ' . $e->getMessage());
     }
 
     // Write JSON
@@ -147,7 +147,7 @@ function output_results() {
             throw new Exception("Failed to write to JSON file.");
         }
     } catch (Exception $e) {
-        // chatbot_chatgpt_back_trace( 'ERROR', $e->getMessage());
+        chatbot_ultra_back_trace( 'ERROR', $e->getMessage());
     }
 
     return;

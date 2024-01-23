@@ -1,11 +1,11 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Knowledge Navigator - Scheduler - Ver 1.6.3
+ * Chatbot Ultra for WordPress - Knowledge Navigator - Scheduler - Ver 1.6.3
  *
  * This is the file that schedules the Knowledge Navigator.
  * Scheduled can be now, daily, weekly, etc.
  * 
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -21,12 +21,12 @@ function knowledge_navigator_scan() {
     global $topWords;
 
     // DIAG - Diagnostic - Ver 1.6.3
-    // chatbot_chatgpt_back_trace( 'NOTICE', 'ENTERING knowledge_navigator_scan()');
+    // chatbot_ultra_back_trace( 'NOTICE', 'ENTERING knowledge_navigator_scan()');
     
-    $run_scanner = get_option('chatbot_chatgpt_knowledge_navigator', 'No');
+    $run_scanner = get_option('chatbot_ultra_knowledge_navigator', 'No');
 
     // The second parameter is the default value if the option is not set.
-    update_option('chatbot_chatgpt_kn_status', 'In Process');
+    update_option('chatbot_ultra_kn_status', 'In Process');
 
     if (!isset($run_scanner)) {
         $run_scanner = 'No';
@@ -34,20 +34,20 @@ function knowledge_navigator_scan() {
 
     $result = "";
     // Reset the results message
-    update_option('chatbot_chatgpt_kn_results', $result);
+    update_option('chatbot_ultra_kn_results', $result);
 
     // Make sure the results table exists before proceeding - Ver 1.6.3
     dbKNStore();
 
     // Call the kn-acquire.php script
-    chatbot_chatgpt_kn_acquire();
+    chatbot_ultra_kn_acquire();
 
     // Save the results message value into the option
     $kn_results = 'Knowledge Navigation completed! Check the Analysis to download or results.csv file in the plugin directory.';
-    update_option('chatbot_chatgpt_kn_results', $kn_results);
+    update_option('chatbot_ultra_kn_results', $kn_results);
 
     // Notify outcome for up to 3 minutes
-    set_transient('chatbot_chatgpt_kn_results', $kn_results);
+    set_transient('chatbot_ultra_kn_results', $kn_results);
 
     // Get the current date and time.
     $date_time_completed = date("Y-m-d H:i:s");
@@ -56,10 +56,10 @@ function knowledge_navigator_scan() {
     $status_message = 'Completed on ' . $date_time_completed;
 
     // Update the option with the new status message.
-    update_option('chatbot_chatgpt_kn_status', $status_message);
+    update_option('chatbot_ultra_kn_status', $status_message);
 
     // DIAG - Diagnostic - Ver 1.6.3
-    // chatbot_chatgpt_back_trace( 'NOTICE', 'EXITING knowledge_navigator_scan()');
+    // chatbot_ultra_back_trace( 'NOTICE', 'EXITING knowledge_navigator_scan()');
 
 }
 add_action('knowledge_navigator_scan_hook', 'knowledge_navigator_scan');

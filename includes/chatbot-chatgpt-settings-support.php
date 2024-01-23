@@ -1,12 +1,12 @@
 <?php
 /**
- * Chatbot ChatGPT for WordPress - Settings - Support Page
+ * Chatbot Ultra for WordPress - Settings - Support Page
  *
- * This file contains the code for the Chatbot ChatGPT settings page.
+ * This file contains the code for the Chatbot Ultra settings page.
  * It handles the support settings and other parameters.
  * 
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -15,26 +15,26 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Support settings section callback - Ver 1.3.0
-function chatbot_chatgpt_support_section_callback($args) {
+function chatbot_ultra_support_section_callback($args) {
     ?>
     <div id='overview'>
         <h3>Overview</h3>
-        <p>Chatbot ChatGPT for WordPress is a plugin that allows you to effortlessly integrate OpenAI&#8217;s ChatGPT API into your website, providing a powerful, AI-driven chatbot for enhanced user experience and personalized support.</p>
-        <p>ChatGPT is a conversational AI platform that uses natural language processing and machine learning algorithms to interact with users in a human-like manner. It is designed to answer questions, provide suggestions, and engage in conversations with users. ChatGPT is important because it can provide assistance and support to people who need it, especially in situations where human support is not available or is limited. It can also be used to automate customer service, reduce response times, and improve customer satisfaction. Moreover, ChatGPT can be used in various fields such as healthcare, education, finance, and many more.</p>
-        <p>Chatbot ChatGPT leverages the OpenAI platform using the gpt-3.5-turbo, gpt-4, or gpt-4-turbo model to bring artificial intelligence to life within your WordPress website.</p>
+        <p>Chatbot Ultra for WordPress is a plugin that allows you to effortlessly integrate OpenAI&#8217;s ChatGPT API into your website, providing a powerful, AI-driven chatbot for enhanced user experience and personalized support.</p>
+        <p>Chatbot Ultra is a conversational AI platform that uses natural language processing and machine learning algorithms to interact with users in a human-like manner. It is designed to answer questions, provide suggestions, and engage in conversations with users. ChatGPT is important because it can provide assistance and support to people who need it, especially in situations where human support is not available or is limited. It can also be used to automate customer service, reduce response times, and improve customer satisfaction. Moreover, ChatGPT can be used in various fields such as healthcare, education, finance, and many more.</p>
+        <p>Chatbot Ultra leverages the OpenAI platform using the gpt-3.5-turbo, gpt-4, or gpt-4-turbo model to bring artificial intelligence to life within your WordPress website.</p>
         <p><b>Important Note:</b> This plugin requires an API key from OpenAI to function correctly. You can obtain an API key by signing up at <a href="https://platform.openai.com/account/api-keys" rel="nofollow ugc" target="_blank">https://platform.openai.com/account/api-keys</a>.<p>
         <h3>Official Sites:</h3>
             <ul style="list-style-type: disc; list-style-position: inside; padding-left: 1em;"> 
-            <li><a href="https://kognetiks.com/wordpress-plugins/chatbot-chatgpt/" rel="nofollow ugc" target="_blank">Kognetiks.com</a></li>
-            <li><a href="https://github.com/kognetiks/chatbot-chatgpt" target="_blank">https://github.com/kognetiks/chatbot-chatgpt</a></li>
-            <li><a href="https://wordpress.org/plugins/chatbot-chatgpt/" target="_blank">https://wordpress.org/plugins/chatbot-chatgpt/</a></li>
+            <li><a href="https://kognetiks.com/wordpress-plugins/chatbot-ultra/" rel="nofollow ugc" target="_blank">Kognetiks.com</a></li>
+            <li><a href="https://github.com/kognetiks/chatbot-ultra" target="_blank">https://github.com/kognetiks/chatbot-ultra</a></li>
+            <li><a href="https://wordpress.org/plugins/chatbot-ultra/" target="_blank">https://wordpress.org/plugins/chatbot-ultra/</a></li>
         </ul>
         <h3>Support:</h3>
             <ul style="list-style-type: disc; list-style-position: inside; padding-left: 1em;"> 
             <li><a href="https://discord.gg/nXRzxUKvya" rel="nofollow ugc" target="_blank">Support @ Discord</a></li>
             <li><a href="https://kognetiks.com/wordpress-plugins/plugin-support/" rel="nofollow ugc" target="_blank">Support @ Kognetiks.com</a></li>
-            <li><a href="https://wordpress.org/support/plugin/chatbot-chatgpt/" target="_blank">Support @ Wordpress.org</a></li>
-            <li><a href="https://github.com/kognetiks/chatbot-chatgpt/issues" target="_blank">Support @ GitHub.com</a></li>
+            <li><a href="https://wordpress.org/support/plugin/chatbot-ultra/" target="_blank">Support @ Wordpress.org</a></li>
+            <li><a href="https://github.com/kognetiks/chatbot-ultra/issues" target="_blank">Support @ GitHub.com</a></li>
         </ul>
         <h3>Features</h3>
         <ul style="list-style-type: disc; list-style-position: inside; padding-left: 1em;">
@@ -57,22 +57,22 @@ function chatbot_chatgpt_support_section_callback($args) {
         <h3>Getting Started</h3>
         <ol>
             <li>Obtain your API key by signing up at <a href="https://platform.openai.com/account/api-keys" rel="nofollow ugc" target="_blank">https://platform.openai.com/account/api-keys</a>.</li>
-            <li>Install and activate the Chatbot ChatGPT plugin.</li>
+            <li>Install and activate the Chatbot Ultra plugin.</li>
             <li>Navigate to the settings page (Settings &gt; API/Model) and enter your API key.</li>
             <li>Customize the chatbot appearance and other parameters as needed.</li>
-        <li>Add the chatbot to any page or post using the provided shortcode: <b>&#91;chatbot_chatgpt&#93;</b></li>
+        <li>Add the chatbot to any page or post using the provided shortcode: <b>&#91;chatbot_ultra&#93;</b></li>
         </ol>
         <p>Now your website visitors can enjoy a seamless and personalized chat experience powered by OpenAI&#8217;s ChatGPT API.</p>
         <h3>Installation</h3>
         <ol>
-            <li>Upload the &#8216;chatbot-chatgpt&#8217; folder to the &#8216;/wp-content/plugins/&#8217; directory.</li>
+            <li>Upload the &#8216;chatbot-ultra&#8217; folder to the &#8216;/wp-content/plugins/&#8217; directory.</li>
             <li>Activate the plugin through the &#8216;Plugins&#8217; menu in WordPress.</li>
-            <li>Go to the &#8216;Settings &gt; Chatbot ChatGPT&#8217; page and enter your OpenAI API key.</li>
+            <li>Go to the &#8216;Settings &gt; Chatbot Ultra&#8217; page and enter your OpenAI API key.</li>
             <li>Customize the chatbot appearance and other parameters as needed.</li>
-            <li>Add the chatbot to any page or post using the provided shortcode: <b>&#91;chatbot_chatgpt&#93;<b></li>
+            <li>Add the chatbot to any page or post using the provided shortcode: <b>&#91;chatbot_ultra&#93;<b></li>
             <li><b>Chatbot ChatGPT</b> now support either an embedded chatbot or floating chatbot.</li>
-            <li>Use <b>&#91;chatbot_chatgpt&#93;</b> or <b>&#91;chatbot_chatgpt style="floating"&#93;</b> to display the chatbot as a floating chatbot.</li>
-            <li>Use <b>&#91;chatbot_chatgpt style="embedded"&#93;</b> to display the chatbot as an embedded chatbot.</li>
+            <li>Use <b>&#91;chatbot_ultra&#93;</b> or <b>&#91;chatbot_ultra style="floating"&#93;</b> to display the chatbot as a floating chatbot.</li>
+            <li>Use <b>&#91;chatbot_ultra style="embedded"&#93;</b> to display the chatbot as an embedded chatbot.</li>
             <li>By default, the chatbot will appear in the lower right corner of the page. This is adjustable in the .css file but not recommended for the causal site builders.</li>
             </ol>
     </div>
@@ -87,20 +87,20 @@ function chatbot_chatgpt_support_section_callback($args) {
             <li>Coupling the power of ChatGPT or a GPT Assistant with the flexibility of WordPress, Chatbot ChatGPT for WordPress is a plugin that allows you to effortlessly integrate OpenAI&#8217;s ChatGPT API into your website.</li>
             <li>This provides a powerful, AI-driven chatbot for enhanced user experience and personalized support.</li>
             <li>For more information on using assistants, see <a href="https://beta.openai.com/docs/guides/assistants" rel="nofollow ugc" target="_blank">https://beta.openai.com/docs/guides/assistants</a>.</li>
-            <li>Additional integration information can be found at <a href="https://kognetiks.com/wordpress-plugins/chatbot-chatgpt/chatbot-chatgpt-for-wordpress-assistants-and-custom-gpts/" rel="nofollow ugc" target="_blank">https://kognetiks.com/wordpress-plugins/chatbot-chatgpt/chatbot-chatgpt-for-wordpress-assistants-and-custom-gpts/</a>.</li>
+            <li>Additional integration information can be found at <a href="https://kognetiks.com/wordpress-plugins/chatbot-ultra/chatbot-ultra-for-wordpress-assistants-and-custom-gpts/" rel="nofollow ugc" target="_blank">https://kognetiks.com/wordpress-plugins/chatbot-ultra/chatbot-ultra-for-wordpress-assistants-and-custom-gpts/</a>.</li>
         </ul>
         <h2>Using Multiple Custom GPT Assistants</h2>
         <ul style="list-style-type: disc; list-style-position: inside; padding-left: 1em;">
             <li>In Settings > API/Model, you can select to use ChatGPT (i.e., original) or use one of two different Custom GPT Assistants you've created.</li>
             <li>As explain above, build your custom GPT assistants in the OpenAI Playground.</li>
             <li>Decide which one of your assistants will be 'primary' and which one will be 'alternate'.</li>
-            <li>Incorporate your assistants in one of several different ways using the <b>&#91;chatbot_chatgpt&#93;</B> shortcode.</li>
+            <li>Incorporate your assistants in one of several different ways using the <b>&#91;chatbot_ultra&#93;</B> shortcode.</li>
             <p>Use the following format to invoke the primary or alternate assistant:</p>
-            <li><b>&#91;chatbot_chatgpt&#93;</b> - Default values, floating style, uses OpenAI's ChatGPT</li>
-            <li><b>&#91;chatbot_chatgpt style="floating"&#93;</b> - Floating style, uses OpenAI's ChatGPT</li>
-            <li><b>&#91;chatbot_chatgpt style="embedded"&#93;</b> - Embedded style, uses OpenAI's ChatGPT</li>
-            <li><b>&#91;chatbot_chatgpt style="floating" assistant="primary"&#93;</b> - Floating style, GPT Assistant as set in Primary setting</li>
-            <li><b>&#91;chatbot_chatgpt style="embedded" assistant="alternate"&#93;</b> - Embedded style, GPT Assistant as set in Alternate setting</li>
+            <li><b>&#91;chatbot_ultra&#93;</b> - Default values, floating style, uses OpenAI's ChatGPT</li>
+            <li><b>&#91;chatbot_ultra style="floating"&#93;</b> - Floating style, uses OpenAI's ChatGPT</li>
+            <li><b>&#91;chatbot_ultra style="embedded"&#93;</b> - Embedded style, uses OpenAI's ChatGPT</li>
+            <li><b>&#91;chatbot_ultra style="floating" assistant="primary"&#93;</b> - Floating style, GPT Assistant as set in Primary setting</li>
+            <li><b>&#91;chatbot_ultra style="embedded" assistant="alternate"&#93;</b> - Embedded style, GPT Assistant as set in Alternate setting</li>
         </ul>
     </div>
     <hr style="border-top: 2px solid black;">
