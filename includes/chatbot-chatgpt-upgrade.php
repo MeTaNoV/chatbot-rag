@@ -108,10 +108,10 @@ function chatbot_ultra_upgrade() {
 
     // // Add new or replaced options - chatbot_ultra_plugin_version
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_plugin_version' )) {
-    //     delete_option( 'chatgpt_plugin_version' );
+    // if (get_option( 'ultra_plugin_version' )) {
+    //     delete_option( 'ultra_plugin_version' );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', 'chatgpt_plugin_version option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', 'ultra_plugin_version option deleted');
     // }
 
     // // Replace option - chatbot_ultra_width
@@ -123,9 +123,9 @@ function chatbot_ultra_upgrade() {
     //     // DIAG - Log the old option deletion
     //     // chatbot_ultra_back_trace('NOTICE', 'chatbot_width_setting option deleted');
     // }
-    // if (get_option( 'chatgpt_width_setting' )) {
+    // if (get_option( 'ultra_width_setting' )) {
     //     $chatbot_ultra_width = get_option('chatbot_width_setting');
-    //     delete_option( 'chatgpt_width_setting' );
+    //     delete_option( 'ultra_width_setting' );
     //     update_option( 'chatbot_ultra_width', $chatbot_ultra_width );
     //     // DIAG - Log the old option deletion
     //     // chatbot_ultra_back_trace('NOTICE', 'chatbot_ultra_width option replaced');
@@ -143,22 +143,22 @@ function chatbot_ultra_upgrade() {
 
     // // Replace option - chatbot_ultra_avatar_greeting
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_avatar_greeting_setting' )) {
-    //     $chatbot_ultra_avatar_greeting = get_option( 'chatgpt_avatar_greeting_setting' );
-    //     delete_option( 'chatgpt_avatar_greeting_setting' );
+    // if (get_option( 'ultra_avatar_greeting_setting' )) {
+    //     $chatbot_ultra_avatar_greeting = get_option( 'ultra_avatar_greeting_setting' );
+    //     delete_option( 'ultra_avatar_greeting_setting' );
     //     update_option( 'chatbot_ultra_avatar_greeting', $chatbot_ultra_avatar_greeting );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', 'cchatgpt_avatar_greeting_setting option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', 'cultra_avatar_greeting_setting option deleted');
     // }
 
-    // // Replace option - chatgpt_avatar_icon_setting
+    // // Replace option - ultra_avatar_icon_setting
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_avatar_icon_setting' )) {
-    //     $chatbot_ultra_avatar_greeting = get_option( 'chatgpt_avatar_icon_setting' );
-    //     delete_option( 'chatgpt_avatar_icon_setting' );
+    // if (get_option( 'ultra_avatar_icon_setting' )) {
+    //     $chatbot_ultra_avatar_greeting = get_option( 'ultra_avatar_icon_setting' );
+    //     delete_option( 'ultra_avatar_icon_setting' );
     //     update_option( 'chatbot_ultra_avatar_icon', $chatbot_ultra_avatar_icon );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_avatar_icon_setting option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_avatar_icon_setting option deleted');
     // }
     // if (get_option ( 'chatbot_ultra_avatar_icon' )) {
     //     delete_option( 'chatbot_ultra_avatar_icon' );
@@ -166,84 +166,84 @@ function chatbot_ultra_upgrade() {
     //     // chatbot_ultra_back_trace('NOTICE', 'chatbot_ultra_avatar_icon option replaced');
     // }
 
-    // // Replace option - chatgpt_avatar_icon_setting
+    // // Replace option - ultra_avatar_icon_setting
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_avatar_icon_url_setting' )) {
-    //     $chatbot_ultra_avatar_icon_url = get_option( 'chatgpt_avatar_icon_url_setting' );
-    //     delete_option( 'chatgpt_avatar_icon_url_setting' );
+    // if (get_option( 'ultra_avatar_icon_url_setting' )) {
+    //     $chatbot_ultra_avatar_icon_url = get_option( 'ultra_avatar_icon_url_setting' );
+    //     delete_option( 'ultra_avatar_icon_url_setting' );
     //     update_option( 'chatbot_ultra_avatar_icon_url', $chatbot_ultra_avatar_icon_url );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_avatar_icon_url_setting option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_avatar_icon_url_setting option deleted');
     // }
 
-    // // Replace option - chatgpt_bot_name
+    // // Replace option - ultra_bot_name
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_bot_name' )) {
-    //     $chatbot_ultra_bot_name = get_option( 'chatgpt_bot_name' );
-    //     delete_option( 'chatgpt_bot_name' );
+    // if (get_option( 'ultra_bot_name' )) {
+    //     $chatbot_ultra_bot_name = get_option( 'ultra_bot_name' );
+    //     delete_option( 'ultra_bot_name' );
     //     update_option( 'chatbot_ultra_bot_name', $chatbot_ultra_bot_name );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_bot_name option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_bot_name option deleted');
     // }
 
-    // // Replace option - chatgpt_custom_avatar_icon_setting
+    // // Replace option - ultra_custom_avatar_icon_setting
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_custom_avatar_icon_setting' )) {
-    //     $chatbot_ultra_custom_avatar_icon = get_option( 'chatgpt_custom_avatar_icon_setting' );
-    //     delete_option( 'chatgpt_custom_avatar_icon_setting' );
+    // if (get_option( 'ultra_custom_avatar_icon_setting' )) {
+    //     $chatbot_ultra_custom_avatar_icon = get_option( 'ultra_custom_avatar_icon_setting' );
+    //     delete_option( 'ultra_custom_avatar_icon_setting' );
     //     update_option( 'chatbot_ultra_custom_avatar_icon', $chatbot_ultra_custom_avatar_icon );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_custom_avatar_icon_setting option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_custom_avatar_icon_setting option deleted');
     // }
 
-    // // Replace option - chatgpt_diagnostics
+    // // Replace option - ultra_diagnostics
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_diagnostics' )) {
-    //     $chatbot_ultra_diagnostics = get_option( 'chatgpt_diagnostics' );
-    //     delete_option( 'chatgpt_diagnostics' );
+    // if (get_option( 'ultra_diagnostics' )) {
+    //     $chatbot_ultra_diagnostics = get_option( 'ultra_diagnostics' );
+    //     delete_option( 'ultra_diagnostics' );
     //     update_option( 'chatbot_ultra_diagnostics', $chatbot_ultra_diagnostics );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_diagnostics option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_diagnostics option deleted');
     // }
 
-    // // Replace option - chatgpt_disclaimer_setting
+    // // Replace option - ultra_disclaimer_setting
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_disclaimer_setting' )) {
-    //     $chatbot_ultra_disclaimer = get_option( 'chatgpt_disclaimer_setting' );
-    //     delete_option( 'chatgpt_disclaimer_setting' );
+    // if (get_option( 'ultra_disclaimer_setting' )) {
+    //     $chatbot_ultra_disclaimer = get_option( 'ultra_disclaimer_setting' );
+    //     delete_option( 'ultra_disclaimer_setting' );
     //     update_option( 'chatbot_ultra_disclaimer', $chatbot_ultra_disclaimer );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_disclaimer_setting option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_disclaimer_setting option deleted');
     // }
 
-    // // Replace option - chatgpt_ultra_initial_greeting
+    // // Replace option - ultra_ultra_initial_greeting
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_ultra_initial_greeting' )) {
-    //     $chatbot_ultra_initial_greeting = get_option( 'chatgpt_ultra_initial_greeting' );
-    //     delete_option( 'chatgpt_ultra_initial_greeting' );
+    // if (get_option( 'ultra_ultra_initial_greeting' )) {
+    //     $chatbot_ultra_initial_greeting = get_option( 'ultra_ultra_initial_greeting' );
+    //     delete_option( 'ultra_ultra_initial_greeting' );
     //     update_option( 'chatbot_ultra_initial_greeting', $chatbot_ultra_initial_greeting );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_ultra_initial_greeting option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_ultra_initial_greeting option deleted');
     // }
 
-    // // Replace option - chatgpt_max_tokens
+    // // Replace option - ultra_max_tokens
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_max_tokens' )) {
-    //     $chatbot_ultra_max_tokens = get_option( 'chatgpt_max_tokens' );
-    //     delete_option( 'chatgpt_max_tokens' );
+    // if (get_option( 'ultra_max_tokens' )) {
+    //     $chatbot_ultra_max_tokens = get_option( 'ultra_max_tokens' );
+    //     delete_option( 'ultra_max_tokens' );
     //     update_option( 'chatbot_ultra_max_tokens', $chatbot_ultra_max_tokens );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_max_tokens option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_max_tokens option deleted');
     // }
 
-    // // Replace option - chatgpt_model_choice
+    // // Replace option - ultra_model_choice
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_model_choice' )) {
-    //     $chatbot_ultra_model_choice = get_option( 'chatgpt_model_choice' );
-    //     delete_option( 'chatgpt_model_choice' );
+    // if (get_option( 'ultra_model_choice' )) {
+    //     $chatbot_ultra_model_choice = get_option( 'ultra_model_choice' );
+    //     delete_option( 'ultra_model_choice' );
     //     update_option( 'chatbot_ultra_model_choice', $chatbot_ultra_model_choice );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_model_choice option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_model_choice option deleted');
     // }
 
     // // Replace option - chatbot_ultra_start_status_new_visitor
@@ -255,10 +255,10 @@ function chatbot_ultra_upgrade() {
     //     // DIAG - Log the old option deletion
     //     // chatbot_ultra_back_trace('NOTICE', chatbot_ultra_start_status_new_visitor option deleted');
     // }
-    // if (get_option( 'chatgpt_start_status' )) {
-    //     delete_option( 'chatgpt_start_status' );
+    // if (get_option( 'ultra_start_status' )) {
+    //     delete_option( 'ultra_start_status' );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_start_status option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_start_status option deleted');
     // }
 
     // // Replace option - chatbot_ultra_start_status
@@ -271,38 +271,38 @@ function chatbot_ultra_upgrade() {
     //     // chatbot_ultra_back_trace('NOTICE', chatbot_ultra_start_status option deleted');
     // }
 
-    // // Replace option - chatgpt_chatbot_bot_prompt
+    // // Replace option - ultra_chatbot_bot_prompt
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_chatbot_bot_prompt' )) {
-    //     $chatbot_ultra_bot_prompt = get_option( 'chatgpt_chatbot_bot_prompt' );
-    //     delete_option( 'chatgpt_chatbot_bot_prompt' );
+    // if (get_option( 'ultra_chatbot_bot_prompt' )) {
+    //     $chatbot_ultra_bot_prompt = get_option( 'ultra_chatbot_bot_prompt' );
+    //     delete_option( 'ultra_chatbot_bot_prompt' );
     //     update_option( 'chatbot_ultra_bot_prompts', $chatbot_ultra_bot_prompt );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_chatbot_bot_prompt option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_chatbot_bot_prompt option deleted');
     // }
 
-    // // Replace option - chatgpt_subsequent_greeting
+    // // Replace option - ultra_subsequent_greeting
     // // If the old option exists, delete it
-    // if (get_option( 'chatgpt_subsequent_greeting' )) {
-    //     $chatbot_ultra_subsequent_greeting = get_option( 'chatgpt_subsequent_greeting' );
-    //     delete_option( 'chatgpt_subsequent_greeting' );
+    // if (get_option( 'ultra_subsequent_greeting' )) {
+    //     $chatbot_ultra_subsequent_greeting = get_option( 'ultra_subsequent_greeting' );
+    //     delete_option( 'ultra_subsequent_greeting' );
     //     update_option( 'chatbot_ultra_subsequent_greeting', $chatbot_ultra_subsequent_greeting );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatgpt_subsequent_greeting option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultra_subsequent_greeting option deleted');
     // }
 
-    // // Replace option - chatGPTChatBotStatus
-    // if (get_option( 'chatGPTChatBotStatus' )) {
-    //     delete_option( 'chatGPTChatBotStatus' );
+    // // Replace option - ultraChatBotStatus
+    // if (get_option( 'ultraChatBotStatus' )) {
+    //     delete_option( 'ultraChatBotStatus' );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatGPTChatBotStatus option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultraChatBotStatus option deleted');
     // }
 
-    // // Replace option - chatGPTChatBotStatusNewVisitor
-    // if (get_option( 'chatGPTChatBotStatusNewVisitor' )) {
-    //     delete_option( 'chatGPTChatBotStatusNewVisitor' );
+    // // Replace option - ultraChatBotStatusNewVisitor
+    // if (get_option( 'ultraChatBotStatusNewVisitor' )) {
+    //     delete_option( 'ultraChatBotStatusNewVisitor' );
     //     // DIAG - Log the old option deletion
-    //     // chatbot_ultra_back_trace('NOTICE', chatGPTChatBotStatusNewVisitor option deleted');
+    //     // chatbot_ultra_back_trace('NOTICE', ultraChatBotStatusNewVisitor option deleted');
     // }
     
     // FIXME - DETERMINE WHAT OTHER 'OLD' OPTIONS SHOULD BE DELETED
@@ -311,6 +311,7 @@ function chatbot_ultra_upgrade() {
     // Add/update the option - chatbot_ultra_plugin_version
     $plugin_version = get_plugin_version();
     update_option('chatbot_ultra_plugin_version', $plugin_version);
+    
     // DIAG - Log the plugin version
     chatbot_ultra_back_trace('NOTICE', 'chatbot_ultra_plugin_version option created');
 
@@ -364,7 +365,8 @@ function get_plugin_version() {
 
     $plugin_data = get_plugin_data(plugin_dir_path(__FILE__) . '../chatbot-ultra.php');
     $plugin_version = $plugin_data['Version'];
-
+    update_option('chatbot_ultra_plugin_version', $plugin_version);
+    
     // DIAG - Log the plugin version
     // chatbot_ultra_back_trace( 'NOTICE', 'Plugin version '. $plugin_version);
 

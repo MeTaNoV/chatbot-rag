@@ -19,9 +19,9 @@ function chatbot_ultra_shortcode($atts) {
     global $chatbot_ultra_assistant_alias;
 
     // EXAMPLE - Shortcode Attributes
-    // [chatbot_ultra] - Default values, floating style, uses OpenAI's ChatGPT
-    // [chatbot_ultra style="floating"] - Floating style, uses OpenAI's ChatGPT
-    // [chatbot_ultra style="embedded"] - Embedded style, uses OpenAI's ChatGPT
+    // [chatbot_ultra] - Default values, floating style, uses OpenAI's ultra
+    // [chatbot_ultra style="floating"] - Floating style, uses OpenAI's ultra
+    // [chatbot_ultra style="embedded"] - Embedded style, uses OpenAI's ultra
     // [chatbot_ultra style="floating" assistant="primary"] - Floating style, GPT Assistant as set in Primary setting
     // [chatbot_ultra style="embedded" assistant="alternate"] - Embedded style, GPT Assistant as set in Alternate setting
     // [chatbot_ultra style-"floating" assistant="asst_xxxxxxxxxxxxxxxxxxxxxxxx"] - Floating style using a GPT Assistant ID
@@ -64,6 +64,11 @@ function chatbot_ultra_shortcode($atts) {
     $chatbot_ultra_bot_prompt = esc_attr(get_option('chatbot_ultra_bot_prompt', 'Enter your question ...'));
     $chatbot_ultra_allow_file_uploads = esc_attr(get_option('chatbot_ultra_allow_file_uploads', 'No'));
 
+    // If assistant is set to 'original' then do not allow file uploads - Ver 1.7.9
+    if ($chatbot_ultra_assistant_alias == 'original') {
+        $chatbot_ultra_allow_file_uploads = 'No';
+    }
+    
     // Retrieve the custom buttons on/off setting - Ver 1.6.5
     // global $chatbot_ultra_enable_custom_buttons;
     // $chatbot_ultra_enable_custom_buttons = esc_attr(get_option('chatbot_ultra_enable_custom_buttons', 'Off'));
@@ -151,7 +156,6 @@ function chatbot_ultra_shortcode($atts) {
                 }
                 ?>
             </div>
-            <!-- UPLOAD FILES FOR CUSTOM GPTs GOES HERE -->
             <!-- Custom buttons - Ver 1.6.5 -->
             <?php
             $chatbot_ultra_enable_custom_buttons = 'Off'; // 'On' or 'Off'

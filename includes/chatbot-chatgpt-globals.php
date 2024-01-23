@@ -5,7 +5,7 @@
  * This file contains the code for table actions for reporting
  * to display the Chatbot ChatGPT on the website.
  *
- * @package chatbot-chatgpt
+ * @package chatbot-ultra
  */
 
 // If this file is called directly, abort.
@@ -69,9 +69,9 @@ $errorResponses = [
     " It looks like there could be a technical problem with the OpenAI API. Feel free to try again in a bit to see if things are working smoothly."
 ];
 
-// Declare the $chatbot_chatgpt_bot_prompt as global - Ver 1.6.6
-global $chatbot_chatgpt_bot_prompt;
-$chatbot_chatgpt_bot_prompt = [
+// Declare the $chatbot_ultra_bot_prompt as global - Ver 1.6.6
+global $chatbot_ultra_bot_prompt;
+$chatbot_ultra_bot_prompt = [
     "Enter your question ...",
     "Ask me a question ...",
     "I'm listening ...",

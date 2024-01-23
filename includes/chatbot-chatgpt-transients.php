@@ -47,8 +47,14 @@ function set_chatbot_ultra_transients( $transient_type , $transient_value) {
     } elseif ( $transient_type == 'assistant' ) {
         $assistant_transient_key = 'chatbot_ultra_assistant_' . $user_id . '_' . $page_id;
         set_transient($assistant_transient_key, $transient_value, 60*60); // Store for 1 hour
+    } elseif ( $transient_type == 'file_id' ) {
+        $file_transient_key = 'chatbot_ultra_file_id_' . $user_id . '_' . $page_id;
+        set_transient($file_transient_key, $transient_value, 60*60); // Store for 1 hour
+    } elseif ( $transient_type == 'asst_file_id') {
+        $asst_file_transient_key = 'chatbot_ultra_asst_file_id_' . $user_id . '_' . $page_id;
+        set_transient($asst_file_transient_key, $transient_value, 60*60); // Store for 1 hour
     }
-
+    
     // DIAG - Diagnostics
     // chatbot_ultra_back_trace( 'NOTICE', 'Transient set $transient_key ' . $transient_value);
 
@@ -93,6 +99,31 @@ function get_chatbot_ultra_transients( $transient_type, $user_id, $page_id) {
             $transient_value = '';
         }
         return array('file_id' => $transient_value);
+    } elseif ( $transient_type == 'asst_file_id') {
+        $asst_file_transient_key = 'chatbot_ultra_asst_file_id_' . $user_id . '_' . $page_id;
+        $transient_value = get_transient($asst_file_transient_key);
+        if ($transient_value === false) {
+            $transient_value = '';
+        }
+        return array('asst_file_id' => $transient_value);
+    }
+}
+
+// Delete the transients - Ver 1.7.9
+function delete_chatbot_ultra_transients( $transient_type, $user_id, $page_id) {
+
+    if ( $transient_type == 'style' ) {
+        $style_transient_key = 'chatbot_ultra_style_' . $user_id . '_' . $page_id;
+        delete_transient($style_transient_key);
+    } elseif ( $transient_type == 'assistant' ) {
+        $assistant_transient_key = 'chatbot_ultra_assistant_' . $user_id . '_' . $page_id;
+        delete_transient($assistant_transient_key);
+    } elseif ( $transient_type == 'file_id' ) {
+        $file_transient_key = 'chatbot_ultra_file_id_' . $user_id . '_' . $page_id;
+        delete_transient($file_transient_key);
+    } elseif ( $transient_type == 'asst_file_id') {
+        $asst_file_transient_key = 'chatbot_ultra_asst_file_id_' . $user_id . '_' . $page_id;
+        delete_transient($asst_file_transient_key);
     }
 
 }
